@@ -21,10 +21,13 @@ class Admin:
         self.__nom=nom
         self.__email=email
         self.__password=password
+        self.__expenses=[]
     def changePassword(self, nemPassword):
         self.__password=nemPassword
     def giveUsername(self):
         return self.__username
+    def addexpense(self, expenseid):
+        self.__expenses=Admin.__expense.append(expenseid)
 
 class expense:
     __prefix="EXP-"
@@ -58,7 +61,8 @@ class expense:
             x=input("Yes or No?")
             if str(x).lower == "y":
                 for user,proportion in nusers:
-                    self.__involvedUsers=expense.__involvedUsers.append(user, 1/userscount)
+                    user.addexpense(self.__identifiant)
+                    self.__involvedUsers=expense.__involvedUsers.append((user, 1/userscount))
                 restart=True
             else:
                 print "restarting new expense"
